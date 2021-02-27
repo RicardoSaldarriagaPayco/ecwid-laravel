@@ -194,5 +194,6 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
     ],
-
+    'ecwid_app_id' => env('ECWID_APP_ID'),
+    'ecwid_app_secret_key' => env('ECWID_APP_SECRET_KEY'),
 ];
