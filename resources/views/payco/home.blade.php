@@ -344,6 +344,8 @@
     </div>
     
     <script src="https://d35z3p2poghz10.cloudfront.net/ecwid-sdk/css/1.3.7/ecwid-app-ui.min.js"></script>
+    <!--public/js/
+    {!!Html::script('js/payco.js')!!}-->
     <script>
         // Initialize the application
 
@@ -374,9 +376,7 @@ function showEditPage(elementClass) {
     document.querySelector('.content-control-menu-nav').style.display = 'flex';
 }
 
-
 // Function to retutn back to main app page after editing product label page
-
 function goBack() {
     document.querySelector('.content-control-menu-nav').style.display = 'none';
     document.querySelector('.main').style.display = 'block';
@@ -387,10 +387,8 @@ function goBack() {
     }
 }
 
-
 // Reads values from HTML page and sends them to application config
 // To fill values successfully, the input, select or textarea elements on a page must have 'data-name' and 'data-visibility' attributes set. See appProto.html for examples
-
 function readValuesFromPage() {
 
     var applicationConfig = {
@@ -426,7 +424,6 @@ function readValuesFromPage() {
 
 // Reads values from provided config and sets them for inputs on the page. 
 // To fill values successfully, the input, select or textarea elements must have 'data-name' and 'data-visibility' attributes set. See appProto.html for examples
-
 function setValuesForPage(applicationConfig) {
 
     var applicationConfigTemp = {
@@ -476,7 +473,6 @@ function setValuesForPage(applicationConfig) {
 }
 
 // Default settings for new accounts
-
 var initialConfig = {
     private: {
         iTransactUsername: "",
@@ -496,7 +492,6 @@ var initialConfig = {
 initialConfig.public = JSON.stringify(initialConfig.public);
 
 // Executes when we have a new user install the app. It creates and sets the default data using Ecwid JS SDK and Application storage
-
 function createUserData() {
 
     // Saves data for application storage 
@@ -513,9 +508,7 @@ function createUserData() {
     setValuesForPage(initialConfig);
 }
 
-
 // Executes if we have a user who logs in to the app not the first time. We load their preferences from Application storage with Ecwid JS SDK and display them in the app interface
-
 function getUserData() {
 
     // Retrieve all keys and values from application storage, including public app config. Set the values for select, input and textarea elements on a page in a callback
@@ -527,7 +520,6 @@ function getUserData() {
 }
 
 // Executes when we need to save data. Gets all elements' values and saves them to Application storage and public app config via Ecwid JS SDK
-
 function saveUserData() {
 
     var saveData = readValuesFromPage();
@@ -547,9 +539,7 @@ function resetUserData(initialConfig) {
     saveUserData();
 }
 
-
 // Main app function to determine if the user is new or just logs into the app
-
 EcwidApp.getAppStorage('installed', function (value) {
     if (value !== null) {
         getUserData();
@@ -558,8 +548,8 @@ EcwidApp.getAppStorage('installed', function (value) {
         createUserData();
     }
 })
-
     </script>
+
     <script>
         // Autosave feature for fields. Complimentary JS for the one from SDK above
         (function initFieldset() {
