@@ -37,7 +37,9 @@
     </head>
     <body>
         <div class="container">
+        @yield('content')
             <div class="content">
+
                 <div class="title">Laravel 5</div>
             </div>
         </div>

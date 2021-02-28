@@ -16,6 +16,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        return view('welcome');
+    }
+
     public function home()
     {
         return view(
@@ -44,6 +49,14 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
+
+        return view(
+            'payment.response', 
+            [
+                'name' => $request['name'],
+                'email' => $request['email'],
+            ]
+        );
         // Decrypt embedded app payload
         $ecwidPayload = new EcwidPayload();
         $payloadDecrypted = $ecwidPayload->getEcwidPayload($request->input('payload'));

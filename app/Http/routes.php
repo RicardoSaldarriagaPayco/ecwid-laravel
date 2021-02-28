@@ -12,3 +12,4 @@
 */
 
 Route::resource('payco', 'HomeController');
+Route::get('home', 'HomeController@home');

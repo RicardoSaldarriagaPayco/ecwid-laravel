@@ -1,0 +1,4 @@
+<div>
+{{ $name }}
+{{ $email }}
+</div>
