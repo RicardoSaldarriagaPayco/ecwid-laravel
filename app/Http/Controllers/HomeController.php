@@ -50,13 +50,6 @@ class HomeController extends Controller
     public function store(Request $request)
     {
 
-        return view(
-            'payment.response', 
-            [
-                'name' => $request['name'],
-                'email' => $request['email'],
-            ]
-        );
         // Decrypt embedded app payload
         $ecwidPayload = new EcwidPayload();
         $payloadDecrypted = $ecwidPayload->getEcwidPayload($request->input('payload'));
@@ -102,15 +95,55 @@ class HomeController extends Controller
         //$payloadDecryptedData = $appMain->doSomething();
 
         // Display the app home screen
+        // return view(
+        //     'payco.response', 
+        //     [
+        //         'public_key' => $public_key,
+        //         'x_amount' => $x_amount,
+        //         'x_description' => $x_description,
+        //         'x_currency' => $x_currency,
+        //         'ref_payco' => $ref_payco,
+        //         'x_county' => $x_county,
+        //         'payco_test' => $payco_test,
+        //         'url_response_acepted' => $url_response_acepted,
+        //         'url_response_rejected' => $url_response_rejected,
+        //         'url_response_pending' => $url_response_pending,
+        //         'uri2' => $uri2,
+        //         'x_email_billing' => $x_email_billing,
+        //         'name_billing' => $name_billing,
+        //         'x_customer_billing_address1' => $x_customer_billing_address1,
+        //         'phone_billing' => $phone_billing,
+        //         'extra2' => $extra2,
+        //         'extra3' => $extra3,
+        //         'extra4' => $extra4,
+        //         'appNamespace' => \Config::get('app.ecwid_app_id')
+        //     ]
+        // );
         return view(
-            'payco.payment', 
+            'payment.response', 
             [
-                'storeId' => $storeId,
-                'apiAccessToken' => $apiAccessToken,
-                'userLang' => $userLang,
+                'public_key' => 'c84ad754c728bfb10af2c1c3d1594106',
+                'x_amount' => '10000',
+                'x_description' => 'Ecwid-laravel-epayco',
+                'x_currency' => 'cop',
+                'ref_payco' => 'acl123op',
+                'x_county' => 'co',
+                'payco_test' => 'true',
+                'url_response_acepted' => 'https://dashboard.epayco.co/acepted',
+                'url_response_rejected' => 'https://dashboard.epayco.co/rejected',
+                'url_response_pending' => 'https://dashboard.epayco.co/pending',
+                'uri2' => 'uri2',
+                'x_email_billing' => $request['email'],
+                'name_billing' => $request['name'],
+                'x_customer_billing_address1' => '',
+                'phone_billing' => '',
+                'extra2' => 'ecwid-laravel',
+                'extra3' => '',
+                'extra4' => '',
                 'appNamespace' => \Config::get('app.ecwid_app_id')
             ]
         );
+    
     }
 
     /**
